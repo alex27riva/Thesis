@@ -1,0 +1,142 @@
+\documentclass[a4paper, 11pt, twoside]{book}
+\usepackage[a4paper]{geometry}
+\usepackage{textcomp}
+\usepackage{color}
+\usepackage{url}
+\usepackage{amsfonts}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{makeidx}
+\usepackage{fancyhdr}
+\usepackage[times]{quotchap}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{fancybox}
+\usepackage{enumitem}
+
+%% Aggiunge una linea al di sotto di ogni sezione principale
+\usepackage[calcwidth]{titlesec}
+\titleformat{\section}[hang]{\sffamily\bfseries}
+ {\Large\thesection}{12pt}{\Large}[{\titlerule[0.4pt]}]
+
+%% Gestisce la grafica a seconda che si usi latex o pdflatex
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+\pdffalse % no pdflatex
+\else
+\pdfoutput=1 % pdflatex
+\pdftrue
+\fi
+%
+\ifpdf
+\usepackage[pdftex]{floatflt,graphicx}
+\DeclareGraphicsExtensions{.pdf,.mps,.png,.jpg}
+\usepackage[hidelinks,pdftex]{hyperref}
+\else
+\usepackage{floatflt,graphicx}
+\DeclareGraphicsExtensions{.eps}
+\fi
+\usepackage{subfig}
+\usepackage{adjustbox}
+\usepackage{multirow}
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage[utf8]{inputenc} % per accenti
+
+%%%%%%%%%%%%% NUOVI COMANDI E IMPOSTAZIONI %%%%%%%%%%%
+\newenvironment{mcquote}
+  {\begin{list}{}{
+      \setlength{\rightmargin}{\leftmargin}}
+         \item[]``\ignorespaces}
+  {\unskip''\end{list}}
+  
+\newcommand{\mcchap}[2]{\protect{
+ \chapter{#1}
+ \label{#2}
+}}
+
+%% Gestione header: no header sulle dispari bianche
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else%
+    \hbox{}%
+    \thispagestyle{empty}%              % Empty header styles
+    \newpage%
+    \if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
+\makeatletter
+\newenvironment{CenteredBox}{% 
+\begin{Sbox}}{% Save the content in a box
+\end{Sbox}\centerline{\parbox{\wd\@Sbox}{\TheSbox}}}% And output it centered
+\makeatother
+\usepackage[nottoc,numbib]{tocbibind}
+\makeindex
+\linespread{1.1}
+\floatname{algorithm}{Algoritmo}
+\renewcommand{\listalgorithmname}{Elenco degli algoritmi}
+
+\newcommand{\placetextbox}[3]{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \setbox0=\hbox{#3}% Put <stuff> in a box
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(\LenToUnit{#1\paperwidth},\LenToUnit{#2\paperheight}){\vtop{{\null}\makebox[0pt][c]{#3}}}%
+  }%
+}%
+
+
+%%%%%%%%%%%%%%%% METADATI DOCUMENTO %%%%%%%%%%%%%%%%%%
+\date{}
+
+%%%%%%%%%%%%%%%%%% INIZIO DOCUMENTO %%%%%%%%%%%%%%%%%%
+\begin{document}
+\pagestyle{empty}
+
+%% Pagina del titolo
+  \input{content/copertina}
+  \cleardoublepage{}
+  \input{content/dedica}
+  
+%% Indice ed elenchi  
+  \pagenumbering{roman}
+  \setcounter{page}{1}
+  \setcounter{tocdepth}{3}
+  \renewcommand*\contentsname{Contenuti}
+  \tableofcontents
+  
+%% Inizio capitoli
+  \mainmatter{}
+
+%% Capitoli
+  \pagestyle{fancy}
+  \renewcommand{\chaptermark}[1]{\markboth{#1}{}} 
+  \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}} 
+  \fancyhf{} % delete current setting for header and footer 
+  \fancyhead[LE,RO]{\bfseries\thepage} 
+  \fancyhead[LO]{\bfseries\rightmark} 
+  \fancyhead[RE]{\bfseries\leftmark} 
+  \renewcommand{\headrulewidth}{0.8pt} 
+  \renewcommand{\footrulewidth}{0pt} 
+  %\renewcommand{\headheight}{13.59999pt}
+  \addtolength{\headheight}{0.5pt} % make space for the rule 
+  \fancypagestyle{plain}{% 
+  \fancyhead{} % get rid of headers on plain pages
+  \fancyfoot[C]{\bfseries \thepage}
+  \renewcommand{\headrulewidth}{0pt} % and the line 
+  } 
+
+\cleardoublepage{}
+\setcounter{page}{1}
+\include{content/introduction}
+\include{content/conclusions}
+\include{content/colophon}
+\include{content/manual}
+  
+\appendix
+\backmatter{}
+\printindex
+
+\bibliographystyle{biblio/IEEEtran}
+\bibliography{biblio/egbib}
+   
+\end{document}
