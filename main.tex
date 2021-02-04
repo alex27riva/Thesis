@@ -32,6 +32,7 @@
 \ifpdf
 \usepackage[pdftex]{floatflt,graphicx}
 \DeclareGraphicsExtensions{.pdf,.mps,.png,.jpg}
+\graphicspath{{img/}}
 \usepackage[hidelinks,pdftex]{hyperref}
 \else
 \usepackage{floatflt,graphicx}
@@ -40,9 +41,6 @@
 \usepackage{subfig}
 \usepackage{adjustbox}
 \usepackage{multirow}
-
-\usepackage{algorithm}
-\usepackage{algorithmic}
 \usepackage[utf8]{inputenc} % per accenti
 
 %%%%%%%%%%%%% NUOVI COMANDI E IMPOSTAZIONI %%%%%%%%%%%
@@ -62,20 +60,10 @@
 \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else%
     \hbox{}%
     \thispagestyle{empty}%              % Empty header styles
-    \newpage%
+    %\newpage%               togliere commento per avere pagine bianche
     \if@twocolumn\hbox{}\newpage\fi\fi\fi}
 \makeatother
 
-\makeatletter
-\newenvironment{CenteredBox}{% 
-\begin{Sbox}}{% Save the content in a box
-\end{Sbox}\centerline{\parbox{\wd\@Sbox}{\TheSbox}}}% And output it centered
-\makeatother
-\usepackage[nottoc,numbib]{tocbibind}
-\makeindex
-\linespread{1.1}
-\floatname{algorithm}{Algoritmo}
-\renewcommand{\listalgorithmname}{Elenco degli algoritmi}
 
 \newcommand{\placetextbox}[3]{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
   \setbox0=\hbox{#3}% Put <stuff> in a box
@@ -93,7 +81,7 @@
 \pagestyle{empty}
 
 %% Pagina del titolo
-  \input{content/copertina}
+  \input{content/0_Copertina}
   \cleardoublepage{}
   \input{content/dedica}
   
@@ -117,6 +105,7 @@
   \fancyhead[RE]{\bfseries\leftmark} 
   \renewcommand{\headrulewidth}{0.8pt} 
   \renewcommand{\footrulewidth}{0pt} 
+  \renewcommand{\figurename}{Fig.} % cambio nome figura
   %\renewcommand{\headheight}{13.59999pt}
   \addtolength{\headheight}{0.5pt} % make space for the rule 
   \fancypagestyle{plain}{% 
@@ -127,9 +116,14 @@
 
 \cleardoublepage{}
 \setcounter{page}{1}
-\include{content/introduction}
-\include{content/conclusions}
-\include{content/colophon}
+\include{content/1_Introduzione}
+\include{content/2_ContestoLavoro}
+\include{content/3_Obiettivi}
+\include{content/4_BreveStoria}
+\include{content/5_DesignSviluppo}
+\include{content/6_Dashboard}
+\include{content/9_Conclusioni}
+\include{content/Bibliografia}
 \include{content/manual}
   
 \appendix
