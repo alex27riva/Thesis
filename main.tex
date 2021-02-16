@@ -14,6 +14,18 @@
 \usepackage{listings}
 \usepackage{fancybox}
 \usepackage{enumitem}
+%\usepackage[toc,page]{appendix} %test appendice
+%\usepackage{wrapfig} %Figure nel testo
+\usepackage{dirtree}
+
+%% gestisce la bibliografia
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+\addbibresource{content/biblio.bib}
+
 
 %% Aggiunge una linea al di sotto di ogni sezione principale
 \usepackage[calcwidth]{titlesec}
@@ -114,7 +126,7 @@
   \renewcommand{\headrulewidth}{0pt} % and the line 
   } 
 
-\cleardoublepage{}
+%\cleardoublepage{}
 \setcounter{page}{1}
 \include{content/1_Introduzione}
 \include{content/2_ContestoLavoro}
@@ -122,15 +134,21 @@
 \include{content/4_BreveStoria}
 \include{content/5_DesignSviluppo}
 \include{content/6_Dashboard}
+\include{content/7_Deployment}
+\include{content/8_RealizzazioneSito}
 \include{content/9_Conclusioni}
-\include{content/Bibliografia}
+%\begin{appendices}
 \include{content/manual}
+%\end{appendices}
   
 \appendix
 \backmatter{}
 \printindex
 
-\bibliographystyle{biblio/IEEEtran}
-\bibliography{biblio/egbib}
+\medskip
+\printbibliography[
+heading=bibintoc,
+title={Bibliografia}
+]
    
 \end{document}

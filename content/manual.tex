@@ -1,9 +1,12 @@
 \mcchap{Manuale utente}{cap:manuale}
 
-\section{Requisiti software}
+\section{Esecuzione in locale}
+
+\subsection{Requisiti software}
 Il progetto è stato realizzato utilizzando \emph{ambiente di sviluppo integrato} (IDE) Pycharm Community.
 Per l'esecuzione della dashboard sono richieste le seguenti dipendenze.
 \begin{itemize}
+ \item Git
  \item Python 3.8.5
  \item Pandas
  \item Plotly 
@@ -11,7 +14,10 @@ Per l'esecuzione della dashboard sono richieste le seguenti dipendenze.
  \item Dash Bootstrap Components
  \end{itemize}
  
- \section{Installazione dipendenze}
+ \subsection{Clonazione del repository}
+ E' possibile scaricare il progetto direttamente dal mio repository Github, con il comando \texttt{git clone https://github.com/alex27riva/Covid-dashboard}
+ 
+ \subsection{Installazione dipendenze}
  Per installare le librerie richieste è sufficiente lanciare i seguenti comandi dal termianle integrato in Pycharm.
  
  \begin{itemize}
@@ -28,6 +34,68 @@ Per l'esecuzione della dashboard sono richieste le seguenti dipendenze.
     \label{fig:pycharm_termianl}
 \end{figure}
 
-\section{Esecuzione}
- 
- 
+Ad installazione completata, sarà possibile avviare il progetto.
+
+\subsection{Avvio del programma}
+
+Per avviare il programma basta premere sul pulsante con la freccina verde.
+Verrà avviato un server locale, il cui suo URL verrà mostrato nella console di debug a cui si potrà visualizzare la pagina della dashboard.
+
+ \begin{figure}[htp]
+    \centering
+    \includegraphics[width=9cm]{running_program}
+    \caption{Programma Python in esecuzione}
+    \label{fig:running_program}
+\end{figure}
+
+\section{Configurazione della VPS}
+E' necessario disporrre di un server privato virtuale (VPS) con sistema operativo Ubuntu Server.
+
+\subsection{Creazione account utente}
+Per questioni di sicurezza è meglio non utilizzare l'account privilegiato \emph{root}.
+\begin{enumerate}
+\item Collegarsi alla VPS tramite SSH \texttt{ssh root@<ip-della-VPS>}
+\item Crea l'account per l'utente admin \texttt{useradd -m admin}
+\item Imposta una password per l'utente admin \texttt{passwd admin}
+\item Chiudi la connessione con il comando \texttt{exit}
+\end{enumerate}
+
+\subsection{Installazione di Docker}
+
+\begin{enumerate}
+\item Collegati alla VPS con l'account admin \texttt{ssh admin@<ip-della-VPS>}
+\item Scarica lo script per l'installazione di Docker \texttt{curl -fsSL https://get.docker.com -o get-docker.sh}
+\item Esegui lo script con \texttt{sudo sh get-docker.sh}
+\item Esegui questo comando per interagire con Docker senza previlegi di root \texttt{sudo usermod -aG docker admin}
+\end{enumerate}
+
+\subsection{Installazione e avvio dei container}
+I container con le tre dashboard sono presenti nei repository di Docker, è sufficiente eseguire i seguenti comandi per la loro installazione e avvio.
+\begin{itemize}
+\item \texttt{docker run -d -p 8050:8050 --name=dashboard\_italy alex27riva/dash\_italy}
+\item \texttt{docker run -d -p 8051:8050 --name=dashboad\_lomb alex27riva/dashboard\_lombardia}
+\item \texttt{docker run -d -p 8052:8050 --name=dashboard\_regioni alex27riva/dashboard\_regioni}
+\end{itemize}
+
+\subsection{Portainer}
+Per una gestione più semplice dei container Docker è possibile installare Portainer, un interfaccia web che facilita l'avvio, aggiornamento, rimozione dei container.
+Per installare Portainer sono necessari questi due comandi:
+\begin{enumerate}
+    \item \texttt{docker volume create portainer\_data}
+    \item \texttt{docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always\\ -v /var/run/docker.sock:/var/run/docker.sock -v portainer\_data:/data\\ portainer/portainer-ce}
+\end{enumerate}
+
+Ora si può collegarsi all'interfaccia web all'indirizzo \emph{http://\textless ip-vps\textgreater:9000}
+
+\subsection{Ngnix}
+Ngnix è un web server, che è stato utilizzato come reverse proxy.
+
+\subsubsection{Installazione di Ngnix}
+
+\begin{enumerate}
+    \item \texttt{sudo apt update}
+    \item \texttt{sudo apt install nginx}
+    \item \texttt{unlink /etc/nginx/sites-enabled/default}
+    \item \texttt{sudo nano /etc/nginx/sites-available/reverse-proxy.conf}
+\end{enumerate}
+
