@@ -90,7 +90,7 @@ Ora si può collegarsi all'interfaccia web all'indirizzo \emph{http://\textless 
 \subsection{Ngnix}
 Ngnix è un web server, che è stato utilizzato come reverse proxy.
 
-\subsubsection{Installazione di Ngnix}
+\subsubsection*{Installazione di Ngnix}
 
 \begin{enumerate}
     \item \texttt{sudo apt update}
@@ -98,4 +98,54 @@ Ngnix è un web server, che è stato utilizzato come reverse proxy.
     \item \texttt{unlink /etc/nginx/sites-enabled/default}
     \item \texttt{sudo nano /etc/nginx/sites-available/reverse-proxy.conf}
 \end{enumerate}
+
+\begin{lstlisting}[basicstyle=\ttfamily\small]
+server
+ {
+    listen 80;
+    listen 443;
+    listen [::]:80;
+    ssl on;
+    ssl_certificate /etc/letsencrypt/live/dash.covid19-italy.it/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/dash.covid19-italy.it/privkey.pem;
+
+    server_name dash.covid19-italy.it
+    
+    access_log /var/log/nginx/reverse-access.log;
+    error_log /var/log/nginx/reverse-error.log;
+    
+    location /italy/ {
+                proxy_pass http://localhost:8050;
+
+    }
+
+    location /lombardy/ {
+            proxy_pass http://localhost:8051;
+
+    }
+
+    location /regions/ {
+            proxy_pass http://localhost:8052;
+
+    }
+}
+\end{lstlisting}
+
+\subsubsection*{Creazione del link simbolico}
+\texttt{\$ ln -s /etc/nginx/sites-available/reverse-proxy.conf\\ /etc/nginx/sites-enabled/reverse-proxy.conf}
+
+\subsubsection*{Test della configurazione}
+\texttt{nginx -t}
+
+\subsection*{Installazione certificato SSL}
+\begin{enumerate}
+\item Assicurarsi che snap sia aggiornato \texttt{sudo snap install core; sudo snap refresh core}
+\item Installare Certbot \texttt{sudo snap install --classic certbot}
+\item Crea link simbolico per l'eseguibile \texttt{sudo ln -s /snap/bin/certbot /usr/bin/certbot}
+\item Richiesta del certificato \texttt{sudo certbot --nginx}
+\end{enumerate}
+
+\subsection{riavvio di Nginx}
+Riavviare il servizio di Nginx con il seguente comando: \\
+\texttt{sudo systemctl restart nginx}
 

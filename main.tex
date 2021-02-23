@@ -18,13 +18,14 @@
 %\usepackage{wrapfig} %Figure nel testo
 \usepackage{dirtree}
 
-%% gestisce la bibliografia
+%%%%%%  BIBLIOGRAFIA  %%%%%%
 \usepackage[
 backend=biber,
-style=alphabetic,
-sorting=ynt
+style=numeric
 ]{biblatex}
 \addbibresource{content/biblio.bib}
+
+%%%%%%  BIBLIOGRAFIA  %%%%%%
 
 
 %% Aggiunge una linea al di sotto di ogni sezione principale
@@ -109,6 +110,8 @@ sorting=ynt
 
 %% Capitoli
   \pagestyle{fancy}
+  \setlength{\parskip}{1em} %spazio paragrafi
+  \renewcommand{\baselinestretch}{1.2} %spaziatura tra le righe
   \renewcommand{\chaptermark}[1]{\markboth{#1}{}} 
   \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}} 
   \fancyhf{} % delete current setting for header and footer 
@@ -134,8 +137,7 @@ sorting=ynt
 \include{content/4_BreveStoria}
 \include{content/5_DesignSviluppo}
 \include{content/6_Dashboard}
-\include{content/7_Deployment}
-\include{content/8_RealizzazioneSito}
+\include{content/7_RealizzazioneSito}
 \include{content/9_Conclusioni}
 %\begin{appendices}
 \include{content/manual}
@@ -146,6 +148,7 @@ sorting=ynt
 \printindex
 
 \medskip
+\nocite{*} % stampa tutta la bibliografia
 \printbibliography[
 heading=bibintoc,
 title={Bibliografia}

@@ -1,5 +1,24 @@
 \mcchap{Design e sviluppo della soluzione}{cap:designSviluppo}
-\setlength{\parskip}{1em}
+
+\section{Origine dei dati}
+La principale fonte di dati riguardanti la diffusione della pandemia da COVID-19 in Italia è il Dipartimento della Protezione Civile, che giornalmente a partire dal 24 febbraio pubblica i relativi dati sul repository Github \cite{repository}.
+
+\begin{itemize}
+    \item Ricoverati con sintomi: numero di soggetti ricoverati non in terapia intensiva.
+    \item Terapia intensiva: Numero di soggetti ricoverati in terapia intensiva.
+    \item Totale ospedalizzati: Totale dei soggetti ricoverati in ospedale.
+    \item Isolamento domiciliare: Soggetti ricoverati presso la propria abitazione.
+    \item Deceduti: Persone decedute positive al virus.
+    \item Tamponi: numero di tamponi effettuati (antigenici + molecolari)
+\end{itemize}
+
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=5cm]{logo_dpc}
+    \caption{Logo del Dipartimento della Protezione Civile}
+\end{figure}
+
 
 \section{Tecnologie utilizzate}
 
@@ -8,8 +27,12 @@ In questo capitolo verranno elencate alcune delle tecnologie utilizzate per lo s
 \subsection{Python}
 Python è un famoso linguaggio di programmazione ad alto livello, molto utilizzato nel campo \emph{data science}.
 Python dispone di librerie e funzioni matematiche integrate, che semplificano il calcolo dei problemi matematici e l'esecuzione dell'analisi dei dati.
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=4cm]{python_logo}
+    %\caption{Logo di Python}
+\end{figure}
 Lo sviluppo del progetto è stato svolto interamente in linguaggio Python 3.
-
 
 \subsection{Plotly}
 
@@ -23,8 +46,9 @@ I linguaggi supportati sono Python, R, e Javascript.
 \end{figure}
 
 \subsection{Pandas}
-Pandas è una libreria Python per analisi e la manipolazione di dati.
-Pandas utilizza una struttura dati chiamata DataFrame, si tratta di una struttura dati bi-dimensionale, a dimensione variabile e può contenere potenzialmente dati eterogenei.
+Pandas è una libreria Python open source, adatta  per l’analisi e la manipolazione di dati in formato sequenziale o tabellare.
+Pandas consente il Caricamento e il salvataggio di formati standard per dati tabellari, come CSV (Comma-separated Values).
+Una delle strutture dati utilizzate da Pandas prende il nome di DataFrame, una struttura dati bi-dimensionale, con dimensione variabile che può contenere dati eterogenei.
 
 \subsection{Dash}
 La dashboard è stata realizzata utilizzando Dash, un framework Python ideato per costruzione di applicazioni web di analytics.
@@ -32,28 +56,42 @@ La dashboard è stata realizzata utilizzando Dash, un framework Python ideato pe
 
 \noindent Attraverso alcuni semplici pattern, Dash astrae via tutte le tecnologie e i protocolli necessari che sono richiesti per costruire e interagire con applicazione basate su web.
 
-\subsection{Docker}
-Docker è un progetto open source che automatizza il deployment di un'applicazione.
-Docker basa il suo funzionamento su dei container, un contenitore standardizzato che contiene software e le sue relative dipendenze.
-E' stato scelto Docker in quanto rende ogni dashboard isolata dalle altre e pertanto semplifica il processo di aggiornamento.
+\subsection{Github}
+\noindent GitHub è un servizio web e cloud-based che aiuta gli sviluppatori ad archiviare e gestire il loro codice e a tracciare e controllare le modifiche.
 
+\noindent Git è un sistema che consente il controllo delle versioni e permette sviluppatori di collaborare allo stesso progetto contemporaneamente.
+\noindent In sostanza Github, semplifica l’utilizzo del software a riga di comando Git per il controllo delle versioni e la collaborazione.
+
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=3cm]{github_logo}
+    \caption{Logo di Github}
+\end{figure}
+
+\subsection{Docker}
+\noindent Docker è un progetto open source nato con lo scopo di automatizzare la distribuzione di applicazioni sotto forma di “contenitori” detti container.
+I container hanno al loro interno tutto il necessario per la corretta esecuzione dell’applicazione, incluse librerie, strumenti di sistema, codice e runtime.
 
 \begin{figure}[htp]
     \centering
     \includegraphics[width=3cm]{docker_logo}
-    %\caption{Logo di Docker}
+    \caption{Logo di Docker}
 \end{figure}
+
+\noindent Un container è basato su un’immagine che rappresenta tutto il suo contenuto e definisce quale applicativo sarà eseguito al suo interno. 
+Per il progetto è stato scelto Docker in quanto consente di isolare una dashboard dalle altre e pertanto semplifica il processo di distribuzione e aggiornamento.
 
 \section{Lo sviluppo}
+%% scrivere come è stata sviluppata inizialmente la dashboard
 
-\subsection{Fonte dei dati}
-Il Dipartimento della Protezione Civile italiana ha allestito un repository \emph{Github} dove ogni giorno vengono caricati i nuovi dati relativi alla pandemia.
-
+\subsection{Calcoli dei dati}
+I calcoli vengono effettuati direttamente nella struttura DataFrame di Pandas
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=5cm]{logo_dpc}
-    \caption{Logo del Dipartimento della Protezione Civile}
+    \includegraphics[width=10cm]{data_calculation}
 \end{figure}
+
 
 \subsection{Diagramma di attività}
 Un diagramma di attività UML è un diagramma di flusso che rappresenta il flusso del programma da un'attività all'altra,
@@ -65,6 +103,8 @@ da un punto iniziale (punto nero pieno) a un punto finale.
 \end{figure}
 
 \subsection{Organizzazione file}
+Una applicazione Dash è composta essenzialmente da un singolo programma Python.
+Viene utilizzata una versione minimale del framework Bootstrap \footnote{Bootsrap è un framework CSS utilizzato per la semplificare la gestione dello stile della dashboard}, questo assicura dei tempi di caricamento della pagina più rapidi.
 
 \subsubsection{Italia}
 
@@ -97,3 +137,11 @@ da un punto iniziale (punto nero pieno) a un punto finale.
 .4 ....
 .2 dash\_regioni.py.
 }
+
+
+
+\section{Problemi riscontrati}
+I dati forniti dal Dipartimento della Protezione Civile non sono esenti da errori, a causa di errori di trascrizione oppure a causa di comunicazioni parziali o in ritardo dal parte delle regioni.
+
+\noindent Alcune serie di dati, come ad esempio quelli cumulativi come guariti, deceduti, totale casi e tamponi, che dovrebbero essere strettamente crescenti, alcune volte non lo sono.
+
