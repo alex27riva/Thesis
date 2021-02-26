@@ -1,8 +1,9 @@
 \mcchap{Design e sviluppo della soluzione}{cap:designSviluppo}
 
 \section{Origine dei dati}
-La principale fonte di dati riguardanti la diffusione della pandemia da COVID-19 in Italia è il Dipartimento della Protezione Civile, che giornalmente a partire dal 24 febbraio pubblica i relativi dati sul repository Github \cite{repository}.
+La principale fonte di dati riguardanti la diffusione della pandemia da COVID-19 in Italia è il Dipartimento della Protezione Civile, che giornalmente a partire dal 24 febbraio pubblica i relativi dati sul repository Github\cite{repository}.
 
+Alcuni dati disponibili sul repository sono i seguenti:
 \begin{itemize}
     \item Ricoverati con sintomi: numero di soggetti ricoverati non in terapia intensiva.
     \item Terapia intensiva: Numero di soggetti ricoverati in terapia intensiva.
@@ -21,43 +22,56 @@ La principale fonte di dati riguardanti la diffusione della pandemia da COVID-19
 
 
 \section{Tecnologie utilizzate}
-
-In questo capitolo verranno elencate alcune delle tecnologie utilizzate per lo sviluppo del progetto.
+In questa sezione verranno elencate alcune delle tecnologie utilizzate per lo sviluppo del progetto.
 
 \subsection{Python}
-Python è un famoso linguaggio di programmazione ad alto livello, molto utilizzato nel campo \emph{data science}.
-Python dispone di librerie e funzioni matematiche integrate, che semplificano il calcolo dei problemi matematici e l'esecuzione dell'analisi dei dati.
+Python è un linguaggio di programmazione dinamico orientato agli oggetti utilizzabile per molti tipi di sviluppo software, è completamente gratuito ed è utilizzabile senza restrizioni di copyright.\\
+Python è un linguaggio portabile sviluppato in ANSI C, è caratterizzato da una sintassi essenziale, ma consente lo sviluppo di applicazioni molto complesse.\\
+È multipiattaforma e quindi utilizzabile su diversi  sistemi operativi quali Windows, MacOS e GNU/Linux.
+Offre un forte supporto all'integrazione con altri linguaggi e programmi, dispone di una estesa libreria standard e funzioni matematiche integrate, che semplificano il calcolo dei problemi matematici e l'esecuzione dell'analisi dei dati.
+
 \begin{figure}[htp]
     \centering
     \includegraphics[width=4cm]{python_logo}
-    %\caption{Logo di Python}
+    \caption{Logo di Python}
 \end{figure}
-Lo sviluppo del progetto è stato svolto interamente in linguaggio Python 3.
+\noindent Per lo sviluppo del progetto è stato utilizzato interamente il linguaggio Python versione 3.8.
 
 \subsection{Plotly}
 
-Plotly è una piattaforma di visualizzazione dati open source dell’omonima azienda che supporta anche grafici interattivi.
-Plotly supporta la rappresentazione di svariate tipologie di grafici.
-I linguaggi supportati sono Python, R, e Javascript.
+Plotly è una libreria Python open source per la creazione di grafici interattivi, supporta oltre 40 tipologie diverse di grafici che consentono l’applicazione in vari campi scientifici, tra i quali la statistica, la finanza, e la geografia.
+
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=3cm]{plotly_logo}
-    %\caption{Logo di Plotly}
+    \includegraphics[width=4cm]{plotly_logo}
+    \caption{Logo di Plotly}
 \end{figure}
 
 \subsection{Pandas}
 Pandas è una libreria Python open source, adatta  per l’analisi e la manipolazione di dati in formato sequenziale o tabellare.
 Pandas consente il Caricamento e il salvataggio di formati standard per dati tabellari, come CSV (Comma-separated Values).
 Una delle strutture dati utilizzate da Pandas prende il nome di DataFrame, una struttura dati bi-dimensionale, con dimensione variabile che può contenere dati eterogenei.
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=4cm]{pandas_logo}
+    \caption{Logo di Pandas}
+\end{figure}
 
 \subsection{Dash}
-La dashboard è stata realizzata utilizzando Dash, un framework Python ideato per costruzione di applicazioni web di analytics.
-\noindent Dash si appoggia a Flask, Plotly.sj e react.js. Dash ideale per la costruzione di applicazioni di visualizzazione dati con elevata personalizzazione in puro Python. E’ particolarmente indicato per chiunque lavori con i dati in Python.
+Dash è un framework Python ideato per costruzione di applicazioni web di analytics.
+Dash si appoggia a Flask, Plotly.sj e react.js.
+\noindent Dash è ideale per la costruzione di applicazioni di visualizzazione dati con elevata personalizzazione in puro Python. 
+È particolarmente indicato per chiunque lavori con i dati in Python.
 
-\noindent Attraverso alcuni semplici pattern, Dash astrae via tutte le tecnologie e i protocolli necessari che sono richiesti per costruire e interagire con applicazione basate su web.
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=4cm]{dash_logo}
+    \caption{Logo di Dash}
+\end{figure}
+
 
 \subsection{Github}
-\noindent GitHub è un servizio web e cloud-based che aiuta gli sviluppatori ad archiviare e gestire il loro codice e a tracciare e controllare le modifiche.
+\noindent GitHub è un servizio web basato su cloud che aiuta gli sviluppatori ad archiviare e gestire il loro codice e a tracciare e controllare le modifiche.
 
 \noindent Git è un sistema che consente il controllo delle versioni e permette sviluppatori di collaborare allo stesso progetto contemporaneamente.
 \noindent In sostanza Github, semplifica l’utilizzo del software a riga di comando Git per il controllo delle versioni e la collaborazione.
@@ -75,7 +89,7 @@ I container hanno al loro interno tutto il necessario per la corretta esecuzione
 
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=3cm]{docker_logo}
+    \includegraphics[width=4cm]{docker_logo}
     \caption{Logo di Docker}
 \end{figure}
 
@@ -90,6 +104,7 @@ I calcoli vengono effettuati direttamente nella struttura DataFrame di Pandas
 \begin{figure}[htp]
     \centering
     \includegraphics[width=10cm]{data_calculation}
+    \caption{Codice Python per il calcolo dei dati}
 \end{figure}
 
 
@@ -104,7 +119,7 @@ da un punto iniziale (punto nero pieno) a un punto finale.
 
 \subsection{Organizzazione file}
 Una applicazione Dash è composta essenzialmente da un singolo programma Python.
-Viene utilizzata una versione minimale del framework Bootstrap \footnote{Bootsrap è un framework CSS utilizzato per la semplificare la gestione dello stile della dashboard}, questo assicura dei tempi di caricamento della pagina più rapidi.
+Viene utilizzata una versione minimale del framework Bootstrap\footnote{Bootstrap è un framework CSS utilizzato per la semplificare la gestione dello stile della dashboard}, questo assicura dei tempi di caricamento della pagina decisamente più rapidi.
 
 \subsubsection{Italia}
 
@@ -138,10 +153,25 @@ Viene utilizzata una versione minimale del framework Bootstrap \footnote{Bootsra
 .2 dash\_regioni.py.
 }
 
+\subsection{Grafico di esempio}
+
+
+
 
 
 \section{Problemi riscontrati}
-I dati forniti dal Dipartimento della Protezione Civile non sono esenti da errori, a causa di errori di trascrizione oppure a causa di comunicazioni parziali o in ritardo dal parte delle regioni.
+I dati forniti dal Dipartimento della Protezione Civile non sono esenti da errori, ciò può essere dovuto a errori di trascrizione oppure a causa di comunicazioni parziali o in ritardo dal parte delle regioni.
 
 \noindent Alcune serie di dati, come ad esempio quelli cumulativi come guariti, deceduti, totale casi e tamponi, che dovrebbero essere strettamente crescenti, alcune volte non lo sono.
+
+\subsection{Errore nei tamponi}
+Il 17 dicembre 2020 è stato registrato un valore incorretto nel valore cumulativo dei tamponi, ciò ha causato un anomalia nel grafico dei casi normalizzati.\\
+Per la correzione di questo problema è stato effettuato un intervento di pulizia del dato.
+Il dato "incriminato" è stato sostituito con la media tra il giorno precedente e quella del giorno successivo.
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=14cm]{chart_problem}
+    \caption{Problema causato dal valore incorretto dei tamponi}
+\end{figure}
+
 
