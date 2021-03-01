@@ -39,7 +39,9 @@ Offre un forte supporto all'integrazione con altri linguaggi e programmi, dispon
 
 \subsection{Plotly}
 
-Plotly è una libreria Python open source per la creazione di grafici interattivi, supporta oltre 40 tipologie diverse di grafici che consentono l’applicazione in vari campi scientifici, tra i quali la statistica, la finanza, e la geografia.
+Plotly è una libreria Python open source  per la creazione di grafici interattivi, supporta oltre 40 tipologie diverse di grafici che consentono l’applicazione in vari campi scientifici, tra i quali la statistica, la finanza, e la geografia.
+Plotly basa il suo funzionamento sulla libreria Javascript plotly.js, che permette agli utenti Python di realizzare stupende applicazioni di visualizzazione dati interattive, che si possono mostrare in un file HTML indipendente, in un Notebook Jupyter\footnotemark, oppure all’interno di una applicazione web utilizzando Dash.
+\footnotetext{Jupyter Notebook è un'applicazione web open source che consente di creare e condividere documenti che contengono codice Python eseguibile in tempo reale, equazioni, visualizzazioni.}
 
 \begin{figure}[htp]
     \centering
@@ -48,7 +50,7 @@ Plotly è una libreria Python open source per la creazione di grafici interattiv
 \end{figure}
 
 \subsection{Pandas}
-Pandas è una libreria Python open source, adatta  per l’analisi e la manipolazione di dati in formato sequenziale o tabellare.
+Pandas è una libreria Python open source, adatta per l’analisi e la manipolazione di dati in formato sequenziale o tabellare.
 Pandas consente il Caricamento e il salvataggio di formati standard per dati tabellari, come CSV (Comma-separated Values).
 Una delle strutture dati utilizzate da Pandas prende il nome di DataFrame, una struttura dati bi-dimensionale, con dimensione variabile che può contenere dati eterogenei.
 \begin{figure}[htp]
@@ -58,10 +60,14 @@ Una delle strutture dati utilizzate da Pandas prende il nome di DataFrame, una s
 \end{figure}
 
 \subsection{Dash}
-Dash è un framework Python ideato per costruzione di applicazioni web di analytics.
-Dash si appoggia a Flask, Plotly.sj e react.js.
-\noindent Dash è ideale per la costruzione di applicazioni di visualizzazione dati con elevata personalizzazione in puro Python. 
+Dash è un framework Python ideato per la costruzione di applicazioni web di analytics, si appoggia a Flask\footnotemark, Plotly.js e react.js\footnotemark.
+Dash è ideale per la costruzione di applicazioni di visualizzazione dati molto personalizzabili, usando soltanto il linguaggio Python. 
 È particolarmente indicato per chiunque lavori con i dati in Python.
+Attraverso l’utilizzo di semplici pattern, Dash semplifica notevolmente la costruzione di applicazioni basate su web, come nel caso della dashboard, in quanto non è necessario conoscere approfonditamente le tecnologie e i protocolli che ne determinano il funzionamento.
+\footnotetext{Flask è un framework leggero sviluppato da Armin Ronacher per applicazioni web WSGI
+(Web Server Gateway Interface).}
+\footnotetext{React è una libreria JavaScript per la creazione di interfacce utente.}
+
 
 \begin{figure}[htp]
     \centering
@@ -73,7 +79,7 @@ Dash si appoggia a Flask, Plotly.sj e react.js.
 \subsection{Github}
 \noindent GitHub è un servizio web basato su cloud che aiuta gli sviluppatori ad archiviare e gestire il loro codice e a tracciare e controllare le modifiche.
 
-\noindent Git è un sistema che consente il controllo delle versioni e permette sviluppatori di collaborare allo stesso progetto contemporaneamente.
+\noindent Git è un sistema che consente il controllo delle versioni e permette a più sviluppatori di collaborare allo stesso progetto contemporaneamente.
 \noindent In sostanza Github, semplifica l’utilizzo del software a riga di comando Git per il controllo delle versioni e la collaborazione.
 
 
@@ -97,7 +103,7 @@ I container hanno al loro interno tutto il necessario per la corretta esecuzione
 Per il progetto è stato scelto Docker in quanto consente di isolare una dashboard dalle altre e pertanto semplifica il processo di distribuzione e aggiornamento.
 
 \section{Lo sviluppo}
-%% scrivere come è stata sviluppata inizialmente la dashboard
+Lo sviluppo del progetto è iniziato partendo dai dati contenuti in un foglio di calcolo Excel fornito dal professore, dal quale sono state estrapolate le formule necessarie per l’elaborazione degli stessi atti alla costruzione della dashboard.
 
 \subsection{Calcoli dei dati}
 I calcoli vengono effettuati direttamente nella struttura DataFrame di Pandas
@@ -119,30 +125,38 @@ da un punto iniziale (punto nero pieno) a un punto finale.
 
 \subsection{Organizzazione file}
 Una applicazione Dash è composta essenzialmente da un singolo programma Python.
-Viene utilizzata una versione minimale del framework Bootstrap\footnote{Bootstrap è un framework CSS utilizzato per la semplificare la gestione dello stile della dashboard}, questo assicura dei tempi di caricamento della pagina decisamente più rapidi.
+Viene utilizzata una versione minimale del framework Bootstrap\footnotemark, questo assicura dei tempi di caricamento della pagina decisamente più rapidi.
+\footnotetext{Bootstrap è un framework CSS utilizzato per la semplificare la gestione dello stile della dashboard}
 
-\subsubsection{Italia}
-
+\begin{figure}
+\centering
+\begin{minipage}{.3\linewidth}
 \dirtree{%
 .1 italy.
 .2 assets.
 .3 bootstrap.min.css.
 .2 dash\_italy.py.
 }
-
-\subsubsection{Lombardia}
-
+\caption{Struttura file dashboard Italia}
+\end{minipage}\hfill
+\begin{minipage}{.65\linewidth}
 \dirtree{%
 .1 lombardia.
 .2 assets.
 .3 bootstrap.min.css.
 .2 dash\_lombardia.py.
 }
+\caption{Struttura file dashboard Italia}
+\end{minipage}
+\end{figure}
 
-\subsubsection{Regioni}
+% seconda figura
 
+\begin{figure}
+\centering
+\begin{minipage}{.3\linewidth}
 \dirtree{%
-.1 lombardia.
+.1 regioni.
 .2 assets.
 .3 bootstrap.min.css.
 .3 img.
@@ -152,12 +166,18 @@ Viene utilizzata una versione minimale del framework Bootstrap\footnote{Bootstra
 .4 ....
 .2 dash\_regioni.py.
 }
+\caption{Struttura file dashboard regioni}
+\end{minipage}\hfill
+\end{figure}
 
-\subsection{Grafico di esempio}
-
-
-
-
+\section{Grafico di esempio}
+Come scritto precedentemente, i grafici sono interattivi.
+Sul grafico è possibile agire sull'intervallo di tempo selezionato (punto 1), oppure mostrare e nascondere le varie parti cliccando sulla legenda (punto 2).
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=14cm]{chart_explained}
+    \caption{Esempio grafico}
+\end{figure}
 
 \section{Problemi riscontrati}
 I dati forniti dal Dipartimento della Protezione Civile non sono esenti da errori, ciò può essere dovuto a errori di trascrizione oppure a causa di comunicazioni parziali o in ritardo dal parte delle regioni.
