@@ -137,7 +137,7 @@ server
 \subsubsection*{Test della configurazione}
 \texttt{nginx -t}
 
-\subsection*{Installazione certificato SSL}
+\subsection{Installazione certificato SSL}
 \begin{enumerate}
 \item Assicurarsi che snap sia aggiornato \texttt{sudo snap install core; sudo snap refresh core}
 \item Installare Certbot \texttt{sudo snap install --classic certbot}
@@ -145,7 +145,7 @@ server
 \item Richiesta del certificato \texttt{sudo certbot --nginx}
 \end{enumerate}
 
-\subsection{riavvio di Nginx}
+\subsection*{Riavvio di Nginx}
 Riavviare il servizio di Nginx con il seguente comando: \\
 \texttt{sudo systemctl restart nginx}
 

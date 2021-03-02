@@ -14,8 +14,7 @@
 \usepackage{listings}
 \usepackage{fancybox}
 \usepackage{enumitem}
-%\usepackage[toc,page]{appendix} %test appendice
-%\usepackage{wrapfig} % Figure nel testo
+\usepackage[toc,page]{appendix} % appendice
 \usepackage{dirtree}  % struttura directory
 
 %%%%%%  BIBLIOGRAFIA  %%%%%%
@@ -25,8 +24,10 @@ style=numeric
 ]{biblatex}
 \addbibresource{content/biblio.bib}
 
-%%%%%%  BIBLIOGRAFIA  %%%%%%
-
+%%%%%%  APPENDICE  %%%%%%
+\renewcommand{\appendixname}{Appendice}
+\renewcommand{\appendixtocname}{Appendice}
+\renewcommand{\appendixpagename}{Appendice}
 
 %% Aggiunge una linea al di sotto di ogni sezione principale
 \usepackage[calcwidth]{titlesec}
@@ -138,11 +139,12 @@ style=numeric
 \include{content/4_BreveStoria}
 \include{content/5_DesignSviluppo}
 \include{content/6_Dashboard}
-\include{content/7_RealizzazioneSito}
+\include{content/7_Portale}
 \include{content/9_Conclusioni}
-%\begin{appendices}
+\begin{appendices}
 \include{content/manual}
-%\end{appendices}
+\end{appendices}
+\include{content/Colophon}
   
 \appendix
 \backmatter{}
