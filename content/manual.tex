@@ -37,8 +37,13 @@ Per l'esecuzione della dashboard sono richieste le seguenti dipendenze.
 Ad installazione completata, sarà possibile avviare il progetto.
 
 \subsection{Avvio del programma}
-
-Per avviare il programma basta premere sul pulsante con la freccina verde.
+Per l'avvio del programma, cliccare sul pulsante con la freccina verde (nella figura \ref{fig:run_dash}.
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=8cm]{img/run_dash.png}
+    \caption{Avvio del programma}
+    \label{fig:run_dash}
+\end{figure}
 Verrà avviato un server locale, il cui suo URL verrà mostrato nella console di debug a cui si potrà visualizzare la pagina della dashboard.
 
  \begin{figure}[htp]
@@ -63,18 +68,18 @@ Per questioni di sicurezza è meglio non utilizzare l'account privilegiato \emph
 \subsection{Installazione di Docker}
 
 \begin{enumerate}
-\item Collegati alla VPS con l'account admin \texttt{ssh admin@<ip-della-VPS>}
-\item Scarica lo script per l'installazione di Docker \texttt{curl -fsSL https://get.docker.com -o get-docker.sh}
-\item Esegui lo script con \texttt{sudo sh get-docker.sh}
-\item Esegui questo comando per interagire con Docker senza previlegi di root \texttt{sudo usermod -aG docker admin}
+\item Collegarsi alla VPS con l'account admin \texttt{ssh admin@<ip-della-VPS>}
+\item Scaricare lo script per l'installazione di Docker \texttt{curl -fsSL https://get.docker.com -o get-docker.sh}
+\item Eseguire lo script con \texttt{sudo sh get-docker.sh}
+\item Eseguire questo comando per interagire con Docker senza previlegi di root \texttt{sudo usermod -aG docker admin}
 \end{enumerate}
 
 \subsection{Installazione e avvio dei container}
 I container con le tre dashboard sono presenti nei repository di Docker, è sufficiente eseguire i seguenti comandi per la loro installazione e avvio.
 \begin{itemize}
-\item \texttt{docker run -d -p 8050:8050 --name=dashboard\_italy alex27riva/dash\_italy}
-\item \texttt{docker run -d -p 8051:8050 --name=dashboad\_lomb alex27riva/dashboard\_lombardia}
-\item \texttt{docker run -d -p 8052:8050 --name=dashboard\_regioni alex27riva/dashboard\_regioni}
+\item \texttt{docker run -d -p 8050:8050 --name=dash\_italy alex27riva/dash\_italy}
+\item \texttt{docker run -d -p 8051:8050 --name=dash\_lomb alex27riva/dashboard\_lombardia}
+\item \texttt{docker run -d -p 8052:8050 --name=dash\_regioni alex27riva/dashboard\_regioni}
 \end{itemize}
 
 \subsection{Portainer}
@@ -84,12 +89,10 @@ Per installare Portainer sono necessari questi due comandi:
     \item \texttt{docker volume create portainer\_data}
     \item \texttt{docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always\\ -v /var/run/docker.sock:/var/run/docker.sock -v portainer\_data:/data\\ portainer/portainer-ce}
 \end{enumerate}
-
-Ora si può collegarsi all'interfaccia web all'indirizzo \emph{http://\textless ip-vps\textgreater:9000}
+Ora ci si può collegare all'interfaccia web all'indirizzo \emph{http://\textless ip-vps\textgreater:9000}
 
 \subsection{Ngnix}
 Ngnix è un web server, che è stato utilizzato come reverse proxy.
-
 \subsubsection*{Installazione di Ngnix}
 
 \begin{enumerate}

@@ -3,7 +3,7 @@
 \section{Origine dei dati}
 La principale fonte di dati riguardanti la diffusione della pandemia da COVID-19 in Italia è il Dipartimento della Protezione Civile, che giornalmente a partire dal 24 febbraio pubblica i relativi dati sul repository Github\cite{repository}.
 
-Alcuni dati disponibili sul repository sono i seguenti:
+Alcuni dati resi disponibili sul repository sono i seguenti:
 \begin{itemize}
     \item Ricoverati con sintomi: numero di soggetti ricoverati non in terapia intensiva.
     \item Terapia intensiva: Numero di soggetti ricoverati in terapia intensiva.
@@ -66,7 +66,6 @@ Dash è ideale per la costruzione di applicazioni di visualizzazione dati molto 
 Attraverso l’utilizzo di semplici pattern, Dash semplifica notevolmente la costruzione di applicazioni basate su web, come nel caso della dashboard, in quanto non è necessario conoscere approfonditamente le tecnologie e i protocolli che ne determinano il funzionamento.
 \footnotetext{React è una libreria JavaScript per la creazione di interfacce utente.}
 
-
 \begin{figure}[htp]
     \centering
     \includegraphics[width=4cm]{dash_logo}
@@ -111,19 +110,20 @@ I calcoli vengono effettuati direttamente nella struttura DataFrame di Pandas
     \caption{Codice Python per il calcolo dei dati}
 \end{figure}
 
-
 \subsection{Diagramma di attività}
-Un diagramma di attività UML è un diagramma di flusso che rappresenta il flusso del programma da un'attività all'altra,
-da un punto iniziale (punto nero pieno) a un punto finale.
-
+Un diagramma di attività UML è un diagramma di flusso che rappresenta il flusso del programma da un'attività all'altra, da un punto iniziale (punto nero pieno) a un punto finale (punto nero cerchiato).
+Nella figura \ref{fig:activity} è raffigurato il diagramma delle attività per la dashboard.
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=7cm]{activity}
+    \includegraphics[width=10cm]{activity}
+    \caption{Diagramma di attività}
+    \label{fig:activity}
 \end{figure}
 
 \subsection{Organizzazione file}
 Una applicazione Dash è composta essenzialmente da un singolo programma Python.
-Viene utilizzata una versione minimale del framework Bootstrap\footnotemark, questo assicura dei tempi di caricamento della pagina decisamente più rapidi.
+La cartella \emph{assets} contiene il file \emph{bootstrap.min.css}, una versione minimale del framework Bootstrap,\footnotemark questo assicura dei tempi di caricamento della pagina decisamente più rapidi.
+Questa cartella contiene anche i loghi delle regioni, nella dashboard delle regioni (nella figura \ref{fig:tree_regioni}.
 \footnotetext{Bootstrap è un framework CSS utilizzato per la semplificare la gestione dello stile della dashboard}
 
 \begin{figure}
@@ -136,20 +136,20 @@ Viene utilizzata una versione minimale del framework Bootstrap\footnotemark, que
 .2 dash\_italy.py.
 }
 \caption{Struttura file dashboard Italia}
+\label{fig:tree_italia}
 \end{minipage}\hfill
-\begin{minipage}{.65\linewidth}
+\begin{minipage}{.3\linewidth}
 \dirtree{%
 .1 lombardia.
 .2 assets.
 .3 bootstrap.min.css.
 .2 dash\_lombardia.py.
 }
-\caption{Struttura file dashboard Italia}
+\caption{Struttura file dashboard Lombardia}
+\label{fig:tree_lombardia}
 \end{minipage}
 \end{figure}
-
 % seconda figura
-
 \begin{figure}
 \centering
 \begin{minipage}{.3\linewidth}
@@ -165,21 +165,12 @@ Viene utilizzata una versione minimale del framework Bootstrap\footnotemark, que
 .2 dash\_regioni.py.
 }
 \caption{Struttura file dashboard regioni}
+\label{fig:tree_regioni}
 \end{minipage}\hfill
-\end{figure}
-
-\section{Grafico di esempio}
-Come scritto precedentemente, i grafici sono interattivi.
-Sul grafico è possibile agire sull'intervallo di tempo selezionato (punto 1), oppure mostrare e nascondere le varie parti cliccando sulla legenda (punto 2).
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=14cm]{chart_explained}
-    \caption{Esempio grafico}
 \end{figure}
 
 \section{Problemi riscontrati}
 I dati forniti dal Dipartimento della Protezione Civile non sono esenti da errori, ciò può essere dovuto a errori di trascrizione oppure a causa di comunicazioni parziali o in ritardo dal parte delle regioni.
-
 \noindent Alcune serie di dati, come ad esempio quelli cumulativi come guariti, deceduti, totale casi e tamponi, che dovrebbero essere strettamente crescenti, alcune volte non lo sono.
 
 \subsection{Errore nei tamponi}

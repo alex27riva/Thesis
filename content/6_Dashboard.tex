@@ -1,10 +1,19 @@
 \mcchap{Le dashboard}{cap:dashboard}
-\noindent In questo capitolo verranno presentate le schermate estratte dall'applicazione.
+In questo capitolo, a titolo di esempio verranno presentate delle immagini relative alle schermate estratte dall'applicazione.
+È possibile visualizzare l’andamento dei contagi riferito 1, 3, 6 mesi e per tutto il periodo a partire da marzo 2020.
+Tutti i grafici contenuti nella dashboard, sono interattivi.
+Passando con il cursore del mouse sopra al grafico, vengono evidenziate le barre che indicano il numero dei contagi per quel determinato giorno.
+Sul grafico è possibile agire sull'intervallo di tempo selezionando uno dei pulsanti indicati nel riquadro 1 della figura, oppure cliccando sulla legenda del riquadro 2, cambiare la configurazione delle tracce.
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=14cm]{chart_explained}
+    \caption{Esempio grafico}
+\end{figure}
 \section{Dashboard Italia}
-Nella dashboard Italia vengono rappresentati i grafici che riassumono la situazione della pandemia in Italia.
-
+Nella dashboard Italia sono presenti nove diversi grafici che illustrano l’andamento della pandemia attraverso le curve di contagi, le ospedalizzazioni, le terapie intensive e i decessi.
 \subsection{Nuovi casi}
-Il grafico nella figura \ref{fig:nuovi_casi} mostra l'andamento giornaliero delle nuove persone che risultano positive al Covid-19.
+La figura \ref{fig:nuovi_casi} mostra il numero di nuovi casi giornalieri in Italia a partire dall'inizio della pandemia.
+In ascissa sono riportati i giorni, e in ordinata il numero dei nuovi casi riportati in quel determinato giorno.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=14cm]{nuovi_casi}
@@ -22,7 +31,7 @@ Nella figura \ref{fig:totale_casi} sono rappresentati i casi totali delle person
 \end{figure}
 
 \subsection{Isolamento domiciliare}
-Nella figura \ref{fig:isolamento_domiciliare} è raffigurato il grafico delle persone che sono in isolamento presso il loro domicilio.
+Nella figura \ref{fig:isolamento_domiciliare} è raffigurato il grafico delle persone che si trovano in isolamento presso il loro domicilio.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=14cm]{isolamento_domiciliare}
@@ -31,7 +40,8 @@ Nella figura \ref{fig:isolamento_domiciliare} è raffigurato il grafico delle pe
 \end{figure}
 
 \subsection{Terapia intensiva}
-Il grafico della figura \ref{fig:terapia_intensiva} mostra l'andamento dei pazienti ricoverati in ospedale in terapia intensiva.
+La figura \ref{fig:terapia_intensiva} mostra l'andamento dei pazienti ricoverati in ospedale in terapia intensiva dall'inizio della pandemia.
+In blu si può osservare la linea che indica la media mobile a 7 giorni.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=14cm]{terapia_intensiva}
@@ -41,7 +51,7 @@ Il grafico della figura \ref{fig:terapia_intensiva} mostra l'andamento dei pazie
 
 \subsection{Casi normalizzati}
 Il grafico nella figura \ref{fig:casi_normalizzati} mostra il numero di casi normalizzati, ossia resi indipendente dai tamponi effettuati ogni giorno.
-Si può anche osservare (in arancione) la linea della media mobile a 7 giorni.
+In arancione è indicata anche la linea della media mobile a 7 giorni.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=14cm]{casi_norm}
@@ -58,10 +68,10 @@ Nel grafico della figura \ref{fig:ti_ospdedalizzati} è possibile osservare l'an
     \label{fig:ti_ospdedalizzati}
 \end{figure}
 
-% inserire gli altri 2
+% TODO: inserire gli altri 2
 
 \subsection{Nuovi casi e decessi}
-Nel seguente grafico nella figura \ref{fig:casi_decessi} viene mostrato l'andamento dei positivi e dei decessi.
+Nella figura \ref{fig:casi_decessi} viene mostrato l'andamento dei positivi e dei decessi.
 In questo grafico è anche possibile selezionare l'intervallo temporale, agendo sulla barra in basso.
 \begin{figure}[htp]
     \centering
@@ -72,7 +82,8 @@ In questo grafico è anche possibile selezionare l'intervallo temporale, agendo 
 
 \section{Dashboard Lombardia}
 \subsection{Andamento dei contagi}
-Nella figura \ref{fig:andamento_lomb} sono
+Nella figura \ref{fig:andamento_lomb} è raffigurato l'andamento dei contagi nella regione Lombardia.
+In giallo la linea della media mobile a 7 giorni.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=12cm]{img/lomb/andamento_lomb.png}
@@ -81,7 +92,9 @@ Nella figura \ref{fig:andamento_lomb} sono
 \end{figure}
 
 \subsection{Percentuale positivi sui casi testati}
-Nella figura \ref{fig:positivi_testati_lomb}
+Nella figura \ref{fig:positivi_testati_lomb} rappresenta la percentuale del rapporto tra i nuovi casi / totale dei casi e il numero dei casi testati tramite tamponi.
+La linea gialla indica l'andamento dei \emph{nuovi casi testati}, mentre quella blu indica il \emph{totale dei casi testati}.
+Le linee "punteggiate" indicano le medie mobili a 3 giorni.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=12cm]{img/lomb/casi_tamp_lomb.png}
@@ -90,34 +103,36 @@ Nella figura \ref{fig:positivi_testati_lomb}
 \end{figure}
 
 \subsection{Casi normalizzati}
-Nellla figura \ref{fig:casi_norm_lomb} è possibile osservare
+Nella figura \ref{fig:casi_norm_lomb} è possibile osservare l'andamento dei casi normalizzati nella regione Lombardia.
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=12cm]{img/lomb/casi_norm_lomb.png}
+    \includegraphics[width=14cm]{img/lomb/casi_norm_lomb.png}
     \caption{Andamento dei casi normalizzati}
     \label{fig:casi_norm_lomb}
 \end{figure}
 
 \subsection{Ospedalizzazioni}
-Nellla figura \ref{fig:ospedalizzati_lomb} si può osservare che
+Nella figura \ref{fig:ospedalizzati_lomb} si può osservare l'andamento delle ospedalizzazioni nella regione Lombardia.
+In arancione è raffigurata la linea della media mobile a 7 giorni.
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=12cm]{img/lomb/ospedalizzati_lomb.png}
+    \includegraphics[width=14cm]{img/lomb/ospedalizzati_lomb.png}
     \caption{Andamento delle ospedalizzazioni in Lombardia}
     \label{fig:ospedalizzati_lomb}
 \end{figure}
 
 \subsection{Decessi giornalieri}
-Nellla figura \ref{fig:decessi_lomb} si può osservare che
+La figura \ref{fig:decessi_lomb} mostra l'andamento dei decessi nella regione Lombardia.
+La linea blu indica la media mobile a 7 giorni.
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=12cm]{img/lomb/decessi_lomb.png}
+    \includegraphics[width=14cm]{img/lomb/decessi_lomb.png}
     \caption{Andamento dei deceduti}
     \label{fig:decessi_lomb}
 \end{figure}
 
 \subsection{Terapia intensiva}
-Nellla figura \ref{fig:ti_lomb} si può osservare che
+La figura \ref{fig:ti_lomb} mostra l'andamento dei pazienti ricoverati negli ospedali lombardi in terapia intensiva, dall'inizio della pandemia.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=12cm]{img/lomb/ti_lomb.png}
@@ -126,7 +141,21 @@ Nellla figura \ref{fig:ti_lomb} si può osservare che
 \end{figure}
 
 \section{Dashboard Regioni}
-La dashboard regioni permette di visualizzare i dati sulla pandemia per una regione a scelta.
+Nella dashboard regioni, selezionando dal menù a tendina la regione di interesse (nella figura \ref{fig:tendina}), è possibile visualizzarne i dati.
+I grafici contenuti all’interno della dashboard regioni sono analoghi ai precedenti, e riguardano
+\begin{itemize}
+\item Andamento dei contagi
+\item Percentuale nuovi casi sui tamponi effettuati
+\item Totale ospedalizzati
+\item Decessi giornalieri
+\item Terapia intensiva
+\end{itemize}
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=10cm]{img/tendina_regioni.png}
+    \caption{Selezione della regione}
+    \label{fig:tendina}
+\end{figure}
 
 \begin{figure}[htp]
     \centering
