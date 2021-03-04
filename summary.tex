@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\renewcommand{\abstractname}{Riassunto}
+\makeatletter
+\renewenvironment{abstract}{%
+    \if@twocolumn
+      \section*{\abstractname}%
+    \else
+      \begin{center}%
+        {\bfseries \Large\abstractname\vspace{\z@}}
+      \end{center}%
+      \quotation
+    \fi}
+    {\if@twocolumn\else\endquotation\fi}
+\makeatother
+
+\title{Realizzazione di una Dashboard di Business Intelligence per la pandemia da COVID-19}
+\author{Alessandro Riva - 734572}
+\date{Anno Accademico 2019/2020}
+
+\begin{document}
+
+\maketitle
+\begin{abstract}
+    \large
+    \noindent Il seguente lavoro di tesi descrive le attività svolte durante il tirocinio interno, in collaborazione con il Professor Davide Tosi, Ricercatore dell’Università degli Studi dell’Insubria di Varese.
+    Giornalmente il dipartimento di Protezione Civile comunica i numeri dei contagi relativi alla pandemia di Covid 19.
+    Per una migliore consultazione si è pensato di sviluppare un’applicazione in grado di rappresentare i dati in modalità grafica, per facilitare la lettura e la comprensione dell’andamento della pandemia.
+    È stata realizzata un’applicazione web, liberamente accessibile,  che permette di consultare i grafici sulla pandemia di Covid-19.
+    L’applicazione si compone in tre dashboard,  con dei grafici interattivi, che permettono di monitorare l’andamento dei contagi  della pandemia in Italia, sia a livello nazionale, che a livello regionale e provinciale.
+    Gli obiettivi prefissati sono stati pienamente raggiunti attraverso la realizzazione delle dashboard utilizzando il linguaggio open source Python 3.
+    Infine Con il patrocinio dell’Università degli studi dell’Insubria è stato ideato il portale \emph{covid19-italy.it}, un sito che permette di visualizzare i dati aggregati e ufficiali sull’andamento della pandemia regione per regione e a livello nazionale, e alla tabella degli indici R0(t) aggiornati settimanalmente.
+\end{abstract}
+
+\end{document}
