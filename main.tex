@@ -16,6 +16,7 @@
 \usepackage{enumitem}
 \usepackage[toc,page]{appendix} % appendice
 \usepackage{dirtree}  % struttura directory
+\usepackage{hyphenat}
 
 %%%%%%  BIBLIOGRAFIA  %%%%%%
 \usepackage[
@@ -74,7 +75,7 @@ style=numeric
 \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else%
     \hbox{}%
     \thispagestyle{empty}%              % Empty header styles
-    %\newpage%               togliere commento per avere pagine bianche
+    \newpage%               commentare per togliere pagine bianche
     \if@twocolumn\hbox{}\newpage\fi\fi\fi}
 \makeatother
 
@@ -111,8 +112,9 @@ style=numeric
 
 %% Capitoli
   \pagestyle{fancy}
-  \large % aumenta la dimensione del carattere
+  \Large % aumenta la dimensione del carattere
   \setlength{\parskip}{1em} % spazio paragrafi
+  \setlength{\parindent}{0pt} % indentazione dei paragrafi
   \renewcommand{\baselinestretch}{1.2} % spaziatura tra le righe
   \renewcommand{\chaptermark}[1]{\markboth{#1}{}} 
   \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}} 
@@ -131,7 +133,7 @@ style=numeric
   \renewcommand{\headrulewidth}{0pt} % and the line 
   } 
 
-%\cleardoublepage{}
+\cleardoublepage{}
 \setcounter{page}{1}
 \include{content/1_Introduzione}
 \include{content/2_ContestoLavoro}
