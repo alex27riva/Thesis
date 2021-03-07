@@ -1,6 +1,6 @@
 \mcchap{Le dashboard}{cap:dashboard}
 In questo capitolo, a titolo di esempio verranno presentate delle immagini relative alle schermate estratte dall'applicazione.
-È possibile visualizzare l’andamento dei contagi riferito 1, 3, 6 mesi e per tutto il periodo a partire da marzo 2020.
+È possibile visualizzare l’andamento dei contagi riferito a 1, 3, 6 mesi e per tutto il periodo di riferimento a partire da marzo 2020.
 Tutti i grafici contenuti nella dashboard, sono interattivi.
 Passando con il cursore del mouse sopra al grafico, vengono evidenziate le barre che indicano il numero dei contagi per quel determinato giorno.
 Sul grafico è possibile agire sull'intervallo di tempo selezionando uno dei pulsanti indicati nel riquadro 1 della figura, oppure cliccando sulla legenda del riquadro 2, cambiare la configurazione delle tracce.
@@ -41,7 +41,7 @@ Nella figura \ref{fig:isolamento_domiciliare} è raffigurato il grafico delle pe
 
 \subsection{Terapia intensiva}
 La figura \ref{fig:terapia_intensiva} mostra l'andamento dei pazienti ricoverati in ospedale in terapia intensiva dall'inizio della pandemia.
-In blu si può osservare la linea che indica la media mobile a 7 giorni.
+La linea indica la media mobile a 7 giorni.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=14cm]{terapia_intensiva}
@@ -50,7 +50,7 @@ In blu si può osservare la linea che indica la media mobile a 7 giorni.
 \end{figure}
 
 \subsection{Casi normalizzati}
-Il grafico nella figura \ref{fig:casi_normalizzati} mostra il numero di casi normalizzati, ossia resi indipendente dai tamponi effettuati ogni giorno.
+Il grafico nella figura \ref{fig:casi_normalizzati} mostra il numero di casi normalizzati, ossia resi indipendenti dai tamponi effettuati ogni giorno.
 In arancione è indicata anche la linea della media mobile a 7 giorni.
 \begin{figure}[htp]
     \centering
@@ -60,7 +60,7 @@ In arancione è indicata anche la linea della media mobile a 7 giorni.
 \end{figure}
 
 \subsection{Terapia intensiva e ospedalizzati}
-Nel grafico della figura \ref{fig:ti_ospdedalizzati} è possibile osservare l'andamento delle persone ospedalizzate, cioè la somma dei ricoverati con sintomi e della terapia intensiva.
+Nel grafico della figura \ref{fig:ti_ospdedalizzati} è possibile osservare l'andamento delle persone ospedalizzate, cioè la somma dei ricoverati con sintomi e di quelli in terapia intensiva.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=14cm]{ospedalizzati}
@@ -68,9 +68,24 @@ Nel grafico della figura \ref{fig:ti_ospdedalizzati} è possibile osservare l'an
     \label{fig:ti_ospdedalizzati}
 \end{figure}
 
-% TODO: media 7gg: decessi giorn vs contagi giorn
+\subsection{Decessi e contagi giornalieri}
+Nella figura \ref{fig:decessi_contagi_medie} è rappresentato l'andamento dei decessi (linea blu punteggiata) e dei contagi giornalieri (linea arancione punteggiata).
+Le linee blu e arancione sono rispettivamente la media mobile a 7 giorni per decessi e contagi giornalieri.
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=14cm]{img/decessi_vs_contagi.png}
+    \caption{Andamento di decessi e contagi}
+    \label{fig:decessi_contagi_medie}
+\end{figure}
 
-% TODO: % casi positivi / casi testati
+\subsection{Percentuale dei casi positivi sui casi testati}
+Nella figura \ref{fig:casi_pos_testati_italy} si può osservare l'andamento della percentuale dei casi positivi sui casi testati con tamponi.
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=14cm]{img/positivi_testati.png}
+    \caption{Percentuale dei nuovi positivi sui casi testati}
+    \label{fig:casi_pos_testati_italy}
+\end{figure}
 
 \subsection{Nuovi casi e decessi}
 Nella figura \ref{fig:casi_decessi} viene mostrato l'andamento dei positivi e dei decessi.
@@ -94,7 +109,7 @@ In giallo la linea della media mobile a 7 giorni.
 \end{figure}
 
 \subsection{Percentuale positivi sui casi testati}
-Nella figura \ref{fig:positivi_testati_lomb} rappresenta la percentuale del rapporto tra i nuovi casi / totale dei casi e il numero dei casi testati tramite tamponi.
+La figura \ref{fig:positivi_testati_lomb} rappresenta la percentuale del rapporto tra i nuovi casi rispetto al totale dei casi e al numero dei casi testati tramite tamponi.
 La linea gialla indica l'andamento dei \emph{nuovi casi testati}, mentre quella blu indica il \emph{totale dei casi testati}.
 Le linee "punteggiate" indicano le medie mobili a 3 giorni.
 \begin{figure}[htp]
@@ -115,7 +130,7 @@ Nella figura \ref{fig:casi_norm_lomb} è possibile osservare l'andamento dei cas
 
 \subsection{Ospedalizzazioni}
 Nella figura \ref{fig:ospedalizzati_lomb} si può osservare l'andamento delle ospedalizzazioni nella regione Lombardia.
-In arancione è raffigurata la linea della media mobile a 7 giorni.
+In arancione la linea della media mobile a 7 giorni.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=14cm]{img/lomb/ospedalizzati_lomb.png}
@@ -134,7 +149,7 @@ La linea blu indica la media mobile a 7 giorni.
 \end{figure}
 
 \subsection{Terapia intensiva}
-La figura \ref{fig:ti_lomb} mostra l'andamento dei pazienti ricoverati negli ospedali lombardi in terapia intensiva, dall'inizio della pandemia.
+La figura \ref{fig:ti_lomb} mostra l'andamento dei pazienti ricoverati negli ospedali lombardi in terapia intensiva dall'inizio della pandemia.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=12cm]{img/lomb/ti_lomb.png}
@@ -143,8 +158,8 @@ La figura \ref{fig:ti_lomb} mostra l'andamento dei pazienti ricoverati negli osp
 \end{figure}
 
 \section{Dashboard Regioni}
-Nella dashboard regioni, selezionando dal menù a tendina la regione di interesse (nella figura \ref{fig:tendina}), è possibile visualizzarne i dati.
-I grafici contenuti all’interno della dashboard regioni sono analoghi ai precedenti, e riguardano
+Nella dashboard regioni, selezionando dal menù a tendina il nome della regione d'interesse (nella figura \ref{fig:tendina}), è possibile visualizzarne i dati.
+I grafici contenuti all’interno della dashboard regioni sono analoghi ai precedenti, e riguardano:
 \begin{itemize}
 \item Andamento dei contagi
 \item Percentuale nuovi casi sui tamponi effettuati

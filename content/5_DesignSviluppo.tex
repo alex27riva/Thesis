@@ -3,7 +3,7 @@
 \section{Origine dei dati}
 La principale fonte di dati riguardanti la diffusione della pandemia da COVID-19 in Italia è il Dipartimento della Protezione Civile, che giornalmente a partire dal 24 febbraio pubblica i relativi dati sul repository Github\cite{repository}.
 
-Alcuni dati resi disponibili sul repository sono i seguenti:
+Alcuni dei dati resi disponibili sul repository sono i seguenti:
 \begin{itemize}
     \item Ricoverati con sintomi: numero di soggetti ricoverati non in terapia intensiva.
     \item Terapia intensiva: Numero di soggetti ricoverati in terapia intensiva.
@@ -22,12 +22,13 @@ Alcuni dati resi disponibili sul repository sono i seguenti:
 
 
 \section{Tecnologie utilizzate}
-In questa sezione verranno elencate alcune delle tecnologie utilizzate per lo sviluppo del progetto.
+Le tecnologie software disponibili per l'analisi, la manipolazione e la visualizzazione dei dati sono molteplici, in questo progetto sono state utilizzate esclusivamente librerie gratuite ed open source in alternativa alle soluzioni commerciali.
+Di seguito una breve descrizione di ciascuna delle tecnologie utilizzate.
 
 \subsection{Python}
 Python è un linguaggio di programmazione dinamico orientato agli oggetti utilizzabile per molti tipi di sviluppo software, è completamente gratuito ed è utilizzabile senza restrizioni di copyright.\\
 Python è un linguaggio portabile sviluppato in ANSI C, è caratterizzato da una sintassi essenziale, ma consente lo sviluppo di applicazioni molto complesse.\\
-È multipiattaforma e quindi utilizzabile su diversi  sistemi operativi quali Windows, MacOS e GNU/Linux.
+È multipiattaforma e quindi sfruttabile su diversi sistemi operativi quali Windows, MacOS e GNU/Linux.
 Offre un forte supporto all'integrazione con altri linguaggi e programmi, dispone di una estesa libreria standard e funzioni matematiche integrate, che semplificano il calcolo dei problemi matematici e l'esecuzione dell'analisi dei dati.
 Per lo sviluppo del progetto è stato utilizzato interamente il linguaggio Python versione 3.8.
 \begin{figure}[htp]
@@ -39,7 +40,7 @@ Per lo sviluppo del progetto è stato utilizzato interamente il linguaggio Pytho
 \subsection{Plotly}
 
 Plotly è una libreria Python open source  per la creazione di grafici interattivi, supporta oltre 40 tipologie diverse di grafici che consentono l’applicazione in vari campi scientifici, tra i quali la statistica, la finanza, e la geografia.
-Plotly basa il suo funzionamento sulla libreria Javascript plotly.js, che permette agli utenti Python di realizzare stupende applicazioni di visualizzazione dati interattive, che si possono mostrare in un file HTML indipendente, in un Notebook Jupyter\footnotemark, oppure all’interno di una applicazione web utilizzando Dash.
+Plotly basa il suo funzionamento sulla libreria Javascript plotly.js, che permette agli utenti Python di realizzare stupende applicazioni di visualizzazione dati interattive, che si possono mostrare in un file HTML a sé stante, in un Notebook Jupyter\footnotemark, oppure all’interno di una applicazione web utilizzando Dash.
 \footnotetext{Jupyter Notebook è un'applicazione web open source che consente di creare e condividere documenti che contengono codice Python eseguibile in tempo reale, equazioni, visualizzazioni.}
 
 \begin{figure}[htp]
@@ -60,7 +61,7 @@ Una delle strutture dati utilizzate da Pandas prende il nome di DataFrame, una s
 
 \subsection{Dash}
 Dash è un framework Python ideato per la costruzione di applicazioni web di analytics, si appoggia a Flask\footnote{Flask è un framework leggero sviluppato da Armin Ronacher per applicazioni web WSGI
-(Web Server Gateway Interface)}, Plotly.js e react.js\footnotemark.
+(Web Server Gateway Interface)}, Plotly.js e React.js\footnotemark.
 Dash è ideale per la costruzione di applicazioni di visualizzazione dati molto personalizzabili, usando soltanto il linguaggio Python. 
 È particolarmente indicato per chiunque lavori con i dati in Python.
 Attraverso l’utilizzo di semplici pattern, Dash semplifica notevolmente la costruzione di applicazioni basate su web, come nel caso della dashboard, in quanto non è necessario conoscere approfonditamente le tecnologie e i protocolli che ne determinano il funzionamento.
@@ -86,7 +87,7 @@ In sostanza Github, semplifica l’utilizzo del software a riga di comando Git p
 \end{figure}
 
 \subsection{Docker}
-Docker è un progetto open source nato con lo scopo di automatizzare la distribuzione di applicazioni sotto forma di “contenitori” detti container.
+Docker è un progetto open source nato con lo scopo di automatizzare la distribuzione di applicazioni sotto forma di “contenitori” detti \emph{container}.
 I container hanno al loro interno tutto il necessario per la corretta esecuzione dell’applicazione, incluse librerie, strumenti di sistema, codice e runtime.
 
 \begin{figure}[htp]
@@ -101,12 +102,26 @@ Per il progetto è stato scelto Docker in quanto consente di isolare una dashboa
 \section{Lo sviluppo}
 Lo sviluppo del progetto è iniziato partendo dai dati contenuti in un foglio di calcolo Excel fornito dal professore, dal quale sono state estrapolate le formule necessarie per l’elaborazione degli stessi atti alla costruzione della dashboard.
 
-\subsection{Calcoli dei dati}
-I calcoli vengono effettuati direttamente nella struttura DataFrame di Pandas
+\subsection{Funzionamento}
+La dashboard creata è in grado di prelevare i dati direttamente dal file in formato CSV presente nel repository Github fornito dalla protezione civile.
+La dashboard ha la caratteristica di essere stateless, cioè senza memoria, pertanto i dati non vengono memorizzati localmente, ma prelevati dal repository ad ogni caricamento della pagina.
+
+\subsection{Calcolo dei dati}
+I dati prelevati vengono memorizzati all’interno di un dataframe di Pandas, su cui avvengono le elaborazioni necessarie al fine della visualizzazione nei grafici, che consistono in:
+\begin{itemize}
+\item Calcolo decessi giornalieri;
+\item Calcolo tamponi giornalieri;
+\item Calcolo dei casi normalizzati;
+\item Calcolo del rapporto dei nuovi casi meno i casi testati;
+\item Calcolo delle medie mobili
+\end{itemize}
+In figura \ref{fig:calcolo_dati} sono mostrate le istruzioni relative ai calcoli.
+
 \begin{figure}[htp]
     \centering
     \includegraphics[width=10cm]{data_calculation}
     \caption{Codice Python per il calcolo dei dati}
+    \label{fig:calcolo_dati}
 \end{figure}
 
 \subsection{Diagramma di attività}
@@ -122,7 +137,7 @@ Nella figura \ref{fig:activity} è raffigurato il diagramma delle attività per 
 \subsection{Organizzazione file}
 Una applicazione Dash è composta essenzialmente da un singolo programma Python.
 La cartella \emph{assets} contiene il file \emph{bootstrap.min.css}, una versione minimale del framework Bootstrap,\footnotemark questo assicura dei tempi di caricamento della pagina decisamente più rapidi.
-Questa cartella contiene anche i loghi delle regioni, nella dashboard delle regioni (nella figura \ref{fig:tree_regioni}.
+Nella cartella sono contenuti anche i loghi delle regioni, della dashboard regioni. (nella figura \ref{fig:tree_regioni})
 \footnotetext{Bootstrap è un framework CSS utilizzato per la semplificare la gestione dello stile della dashboard}
 
 \begin{figure}
@@ -173,13 +188,11 @@ I dati forniti dal Dipartimento della Protezione Civile non sono esenti da error
 Alcune serie di dati, come ad esempio quelli cumulativi come guariti, deceduti, totale casi e tamponi, che dovrebbero essere strettamente crescenti, alcune volte non lo sono.
 
 \subsection{Errore nei tamponi}
-Il 17 dicembre 2020 è stato registrato un valore incorretto nel valore cumulativo dei tamponi, ciò ha causato un anomalia nel grafico dei casi normalizzati.\\
+Il 17 dicembre 2020 è stato registrato un valore errato nel numero cumulativo dei tamponi, ciò ha causato un anomalia nel grafico dei casi normalizzati.\\
 Per la correzione di questo problema è stato effettuato un intervento di pulizia del dato.
 Il dato "incriminato" è stato sostituito con la media tra il giorno precedente e quella del giorno successivo.
 \begin{figure}[htp]
     \centering
     \includegraphics[width=14cm]{chart_problem}
-    \caption{Problema causato dal valore incorretto dei tamponi}
+    \caption{Problema causato dal valore errato dei tamponi}
 \end{figure}
-
-
