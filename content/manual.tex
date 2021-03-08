@@ -16,7 +16,7 @@ Per l'esecuzione della dashboard sono richieste le seguenti dipendenze.
  \end{itemize}
 
  \subsection{Clonazione del repository}
- E' possibile scaricare il progetto direttamente dal mio repository Github, con il comando \texttt{git clone https://github.com/alex27riva/Covid-dashboard}
+ È possibile scaricare il progetto direttamente dal mio repository Github, con il comando \texttt{git clone https://github.com/alex27riva/Covid-dashboard}
  
  \subsection{Installazione dipendenze}
  Per installare le librerie richieste è sufficiente lanciare i seguenti comandi dal termianle integrato in Pycharm.
@@ -55,28 +55,28 @@ Verrà avviato un server locale, il cui suo URL verrà mostrato nella console di
 \end{figure}
 
 \section{Configurazione della VPS}
-E' necessario disporrre di un server privato virtuale (VPS) con sistema operativo Ubuntu Server.
+È necessario disporrre di un server privato virtuale (VPS) con sistema operativo Ubuntu Server.
 
 \subsection{Creazione account utente}
 Per questioni di sicurezza è meglio non utilizzare l'account privilegiato \emph{root}.
 \begin{enumerate}
-\item Collegarsi alla VPS tramite SSH \texttt{ssh root@<ip-della-VPS>}
-\item Crea l'account per l'utente admin \texttt{useradd -m admin}
-\item Imposta una password per l'utente admin \texttt{passwd admin}
-\item Chiudi la connessione con il comando \texttt{exit}
+\item Collegarsi alla VPS tramite SSH \texttt{ssh root@<ip-vps>}
+\item Creare l'account per l'utente admin \texttt{useradd -m admin}
+\item Impostare una password per l'utente admin \texttt{passwd admin}
+\item Chiudere la connessione con il comando \texttt{exit}
 \end{enumerate}
 
 \subsection{Installazione di Docker}
 
 \begin{enumerate}
-\item Collegarsi alla VPS con l'account admin \texttt{ssh admin@<ip-della-VPS>}
+\item Collegarsi alla VPS con l'account admin \texttt{ssh admin@<ip-vps>}
 \item Scaricare lo script per l'installazione di Docker \texttt{curl -fsSL https://get.docker.com -o get-docker.sh}
 \item Eseguire lo script con \texttt{sudo sh get-docker.sh}
 \item Eseguire questo comando per interagire con Docker senza previlegi di root \texttt{sudo usermod -aG docker admin}
 \end{enumerate}
 
 \subsection{Installazione e avvio dei container}
-I container con le tre dashboard sono presenti nei repository di Docker, è sufficiente eseguire i seguenti comandi per la loro installazione e avvio.
+I container sono presenti nel repository di Docker, eseguire i seguenti comandi per l'installazione e avvio delle dashboard.
 \begin{itemize}
 \item \texttt{docker run -d -p 8050:8050 --name=dash\_italy alex27riva/dash\_italy}
 \item \texttt{docker run -d -p 8051:8050 --name=dash\_lomb alex27riva/dashboard\_lombardia}
@@ -84,18 +84,18 @@ I container con le tre dashboard sono presenti nei repository di Docker, è suff
 \end{itemize}
 
 \subsection{Portainer}
-Per una gestione più semplice dei container Docker è possibile installare Portainer, un interfaccia web che facilita l'avvio, aggiornamento, rimozione dei container.
-Per installare Portainer sono necessari questi due comandi:
+Per una gestione più semplice dei container Docker si installare \emph{Portainer}, un'interfaccia web che facilita l'avvio, aggiornamento, rimozione dei container.
+Per installare Portainer, eseguire questi due comandi:
 \begin{enumerate}
     \item \texttt{docker volume create portainer\_data}
     \item \texttt{docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always\\ -v /var/run/docker.sock:/var/run/docker.sock -v portainer\_data:/data\\ portainer/portainer-ce}
 \end{enumerate}
-Ora ci si può collegare all'interfaccia web all'indirizzo \emph{http://\textless ip-vps\textgreater:9000}
+Ora è possibile accedere all'interfaccia web di \emph{Portainer} all'indirizzo \emph{http://\textless ip-vps\textgreater:9000}
 
 \subsection{Ngnix}
-Ngnix è un web server, che è stato utilizzato come reverse proxy.
+Ngnix è un web server, che è stato utilizzato come reverse proxy, ciò permette di raggiungere la dashboard attraverso un URL, senza specificare un numero di porta differente.
+\newpage
 \subsubsection*{Installazione di Ngnix}
-
 \begin{enumerate}
     \item \texttt{sudo apt update}
     \item \texttt{sudo apt install nginx}
@@ -145,7 +145,7 @@ server
 \begin{enumerate}
 \item Assicurarsi che snap sia aggiornato \texttt{sudo snap install core; sudo snap refresh core}
 \item Installare Certbot \texttt{sudo snap install --classic certbot}
-\item Crea link simbolico per l'eseguibile \texttt{sudo ln -s /snap/bin/certbot /usr/bin/certbot}
+\item Creazione simlink per l'eseguibile \texttt{sudo ln -s /snap/bin/certbot /usr/bin/certbot}
 \item Richiesta del certificato \texttt{sudo certbot --nginx}
 \end{enumerate}
 
