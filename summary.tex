@@ -1,8 +1,12 @@
-\documentclass{article}
+\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{nopageno} % rimuove i numeri di pagina
-%\usepackage[italian]{babel}
-\renewcommand{\abstractname}{Riassunto}
+\usepackage[italian]{babel}
+\addtolength{\topmargin}{-18mm}    
+\addtolength{\textheight}{30mm}    
+\addtolength{\oddsidemargin}{-6mm} 
+\addtolength{\textwidth}{14mm}     
+
 \makeatletter
 \renewenvironment{abstract}{%
     \if@twocolumn
@@ -21,17 +25,17 @@
 \date{Anno Accademico 2019/2020}
 
 \begin{document}
-
+\renewcommand{\abstractname}{Riassunto}
 \maketitle
 \begin{abstract}
-    \large
-    \noindent Il seguente lavoro di tesi descrive le attività svolte durante il tirocinio interno, in collaborazione con il Professor Davide Tosi, Ricercatore dell’Università degli Studi dell’Insubria di Varese.
+    %\large
+    \noindent Il seguente lavoro di tesi descrive le attività svolte durante il tirocinio interno, in collaborazione con il Professor Davide Tosi, Ricercatore dell’Università degli Studi dell’Insubria di Varese.\\
     Giornalmente il dipartimento di Protezione Civile comunica i numeri dei contagi relativi alla pandemia di Covid 19.
-    Per una migliore consultazione si è pensato di sviluppare un’applicazione in grado di rappresentare i dati in modalità grafica, per facilitare la lettura e la comprensione dell’andamento della pandemia.
-    È stata realizzata un’applicazione web, liberamente accessibile, che permette di consultare i grafici sulla pandemia di Covid-19.
-    L’applicazione si compone di tre dashboard, con grafici interattivi, che permettono di monitorare l’andamento dei contagi della pandemia in Italia, sia a livello nazionale, che a livello regionale e provinciale.
+    Per una migliore consultazione si è pensato di sviluppare un’applicazione in grado di rappresentare i dati in modalità grafica, per facilitare la lettura e la comprensione dell’andamento della pandemia.\\
+    È stata realizzata un’applicazione web, liberamente accessibile, che permette di consultare i grafici sulla pandemia di Covid-19.\\
+    L’applicazione si compone di tre dashboard, con grafici interattivi, che permettono di monitorare l’andamento dei contagi della pandemia in Italia, sia a livello nazionale, che a livello regionale e provinciale.\\
     Gli obiettivi prefissati sono stati pienamente raggiunti attraverso la realizzazione delle dashboard utilizzando il linguaggio open source Python 3.
-    Infine con il patrocinio dell’Università degli studi dell’Insubria è stato ideato il portale \emph{covid19-italy.it}, un sito che permette di visualizzare i dati aggregati e ufficiali sull’andamento della pandemia sia a livello nazionale che a livello regionale e provinciale. E consente anche di consultare l'indice di riproduzione dell'epidemia R0(t) aggiornato settimanalmente.
+    Infine con il patrocinio dell’Università degli studi dell’Insubria è stato ideato il portale \emph{covid19-italy.it}, un sito che permette di visualizzare i dati aggregati e ufficiali sull’andamento della pandemia sia a livello nazionale che a livello regionale e provinciale. Inoltre consente di consultare l'indice di riproduzione dell'epidemia R0(t) aggiornato settimanalmente.
 \end{abstract}
 
 \end{document}
